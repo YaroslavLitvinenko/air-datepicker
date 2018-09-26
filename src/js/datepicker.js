@@ -1388,6 +1388,12 @@
     };
 
     datepicker.getParsedDate = function (date) {
+        if (typeof date === "number") {
+            date = new Date(date * 1000);
+        } else if (typeof date === "string") {
+            date = new Date(date);
+        }
+        
         return {
             year: date.getFullYear(),
             month: date.getMonth(),
